@@ -1,5 +1,4 @@
-# Comp 150 Final Project
-## Hashing Algorithms
+# Comp 150 Final Project: Hashing Algorithms
 ## Collaborators: Cecilie Uppard, Flora Liu, Bill Yung
 
 ### Hopscotch Hashing
