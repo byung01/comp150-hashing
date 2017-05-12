@@ -55,7 +55,7 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 To find out whether hopscotch hashing or cuckoo hashing delivers better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. 
 
-*Insertion:*
+**Insertion:**
 
 | Number of input    |   Hopscotch   |   Cuckoo  |
 | ------------------ |:-------------:| ---------:|
@@ -66,7 +66,7 @@ To find out whether hopscotch hashing or cuckoo hashing delivers better performa
 |                    |               |           |                    
 |                    |               |           |
 
-*Query:*
+**Query:**
 
 | Number of input    |   Hopscotch   |   Cuckoo  |
 | ------------------ |:-------------:| ---------:|
@@ -76,26 +76,3 @@ To find out whether hopscotch hashing or cuckoo hashing delivers better performa
 |                    |               |           |
 |                    |               |           |                    
 |                    |               |           |
-
-*Hopscotch Hashing*
-
-| Operation   | Number of input    | Time          | Space  |
-| ----------- | ------------------ |:-------------:| ------:|
-|  Insertion  |                    |               |        |
-|  Insertion  |                    |               |        |                    
-|  Insertion  |                    |               |        |
-|    Query    |                    |               |        |
-|    Query    |                    |               |        |                    
-|    Query    |                    |               |        |
-
-*Cuckoo Hashing*
-
-| Operation   | Number of input    | Time          | Space  |
-| ----------- | ------------------ |:-------------:| ------:|
-|  Insertion  |                    |               |        |
-|  Insertion  |                    |               |        |                    
-|  Insertion  |                    |               |        |
-|    Query    |                    |               |        |
-|    Query    |                    |               |        |                    
-|    Query    |                    |               |        |
-
