@@ -8,6 +8,7 @@
 #include "hopscotch_hashing.h"
 #include <iostream>
 #include <fstream>
+#include <time.h>
 
 using namespace std;
 
@@ -27,6 +28,7 @@ int main(int argc, char *argv[])
     Hopscotch_Hashtable hh;
     string word;
     ifstream input;
+    clock_t t1, t2;
 
     input.open(argv[1]);
 
@@ -35,13 +37,27 @@ int main(int argc, char *argv[])
         usage_abort();
     }
 
+    /* Timing insertion for hopscotch hashing */
+    t1 = clock();
     while (input >> word) {
         hh.insert(word);
     }
-    
+    t1 = clock() - t1;
+    input.close();
+
+    /* Timing searching for hopscotch hashing */
+    input.open(argv[1]);
+    t2 = clock();
+    while (input >> word) {
+        hh.search(word);
+    }
+    t2 = clock() - t2;
     input.close();
 
     hh.print();
+    cout << "It took " << ((float)t1 / CLOCKS_PER_SEC) << " seconds for insertion" << endl;
+    cout << "It took " << ((float)t2 / CLOCKS_PER_SEC) << " seconds for searching" << endl;
+
 
     return 0;
 }

@@ -15,6 +15,8 @@ Hopscotch_Hashtable::Hopscotch_Hashtable()
     size = 0;
     capacity = 2;
     hash_table = new Data[capacity];
+    times_expanded = 0.0;
+    total_load_factor_percentage = 0.0;
 }
 
 Hopscotch_Hashtable::~Hopscotch_Hashtable()
@@ -154,6 +156,13 @@ bool Hopscotch_Hashtable::isInNeighborhood(int og_index, int index)
 
 void Hopscotch_Hashtable::expand()
 {
+    /*
+     *  These two lines were used to calculate the average load factor before
+     *  the table needed to expand
+     */
+    times_expanded++;
+    total_load_factor_percentage += ((double)size/(double)capacity);
+
     Data *old_hash_table = hash_table;
     hash_table = new Data[capacity*2];
 
@@ -171,12 +180,7 @@ void Hopscotch_Hashtable::expand()
 
 void Hopscotch_Hashtable::print()
 {
-    for (int i = 0; i < capacity; i++) {
-        if (hash_table[i].word != "") {
-            cout << "curr_index: " << i << " "  << "og_index: " << hash_table[i].og_index << " " << "value: " << hash_table[i].word << endl;
-        }
-    }
     cout << "Size: " << size << endl;
     cout << "Capacity: " << capacity << endl;
-    cout << endl;
+    cout << "Average Load Factor: " << (total_load_factor_percentage/times_expanded) * 100 << endl;
 }

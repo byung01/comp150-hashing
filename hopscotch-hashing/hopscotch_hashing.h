@@ -11,7 +11,7 @@
 #include <iostream>
 
 /* Defining the neighborhood length */
-#define H 32
+#define H 64
 
 class Hopscotch_Hashtable {
 private:
@@ -33,6 +33,10 @@ private:
     void swapSpots(int spot, int empty);
     bool isInNeighborhood(int og_index, int i);
     void expand();
+
+
+    double times_expanded;
+    double total_load_factor_percentage;
 
 public:
     Hopscotch_Hashtable();
