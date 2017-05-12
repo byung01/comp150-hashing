@@ -1,7 +1,17 @@
 # COMP 150 Final Project: Hashing Algorithms
 ## Collaborators: Cecilie Uppard, Flora Liu, Bill Yung
 
-### Hopscotch Hashing
+### Table of Contents:
+1. Hopscotch Hashing
+2. Cuckoo Hashing
+3. Comparison of Hopscotch and Cuckoo Results
+4. Performance Analysis / Improvements
+5. Conclusion
+6. Bibliography
+
+---
+
+### 1. Hopscotch Hashing
 
 Hopscotch hashing is an alternative hashing algorithm originally proposed by Maurice Herlihy, Nir Shavit and Moran Tzafrir. A main advantage of hopscotch hashing is that this algorithm guarantees a small number of contiguous lookups as table density increases. For our project, we implemented the insert and search operations of hopscotch hashing. The delete operation was not implemented nor timed for analysis, because it follows a similar method as searching.
 
@@ -21,7 +31,7 @@ Hopscotch hashing is an alternative hashing algorithm originally proposed by Mau
 
 **Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/hopscotch-hashing)
 
-### Cuckoo Hashing
+### 2. Cuckoo Hashing
 
 Cuckoo hashing is another alternative hashing algorithm first described by Rasmus Pagh and Flemming Friche Rodler in 2001. The most significant advantage of the algorithm is that it ensures constant lookup time amortized. For our project, we implemented the insert and search operations of hopscotch hashing. The delete operation was also not implemented nor timed for analysis.
 
