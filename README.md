@@ -6,8 +6,8 @@
 ### Table of Contents:
 1. Hopscotch Hashing
 2. Cuckoo Hashing
-3. Comparison of Hopscotch and Cuckoo Results
-4. Performance Analysis / Improvements
+3. Comparison of Hopscotch and Cuckoo Performance
+4. Performance Analysis and Improvements
 5. Conclusion
 6. Bibliography
 
@@ -50,3 +50,52 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 2. If not found in cell, hash key with second hashing function, to look in second table
 
 **Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/cuckoo_hashing)
+
+### 3. Comparison of Hopscotch and Cuckoo Performance
+
+To find out whether hopscotch hashing or cuckoo hashing delivers better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. 
+
+*Insertion:*
+
+| Number of input    |   Hopscotch   |   Cuckoo  |
+| ------------------ |:-------------:| ---------:|
+|                    |               |           |
+|                    |               |           |                    
+|                    |               |           |
+|                    |               |           |
+|                    |               |           |                    
+|                    |               |           |
+
+*Query:*
+
+| Number of input    |   Hopscotch   |   Cuckoo  |
+| ------------------ |:-------------:| ---------:|
+|                    |               |           |
+|                    |               |           |                    
+|                    |               |           |
+|                    |               |           |
+|                    |               |           |                    
+|                    |               |           |
+
+*Hopscotch Hashing*
+
+| Operation   | Number of input    | Time          | Space  |
+| ----------- | ------------------ |:-------------:| ------:|
+|  Insertion  |                    |               |        |
+|  Insertion  |                    |               |        |                    
+|  Insertion  |                    |               |        |
+|    Query    |                    |               |        |
+|    Query    |                    |               |        |                    
+|    Query    |                    |               |        |
+
+*Cuckoo Hashing*
+
+| Operation   | Number of input    | Time          | Space  |
+| ----------- | ------------------ |:-------------:| ------:|
+|  Insertion  |                    |               |        |
+|  Insertion  |                    |               |        |                    
+|  Insertion  |                    |               |        |
+|    Query    |                    |               |        |
+|    Query    |                    |               |        |                    
+|    Query    |                    |               |        |
+
