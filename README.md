@@ -56,14 +56,14 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 **Insertion:**
 
-| Number of input    |     Time      |   Space   |
-| ------------------ |:-------------:| ---------:|
-|                    |       |       |           |
-|                    |       |       |           |                    
-|                    |       |       |           |
-|                    |       |       |           |
-|                    |       |       |           |                    
-|                    |       |       |           |
+| Number of input    |     Time            |   Space   |
+| ------------------ |:-------------------:| ---------:|
+|                    | Hopscotch | Cuckoo  |           |
+|                    | --------- | ------- |           |                    
+|      1000          |     0.5   |   0.5   |           |
+|      10000         |     1.0   |   1.0   |           |
+|      100000        |     1.5   |   1.5   |           |                    
+|      10000000      |     2.0   |   2.0   |           |
 
 **Query:**
 
