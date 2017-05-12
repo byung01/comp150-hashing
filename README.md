@@ -7,8 +7,9 @@
 1. Hopscotch Hashing
 2. Cuckoo Hashing
 3. Testing Hopscotch and Cuckoo Performance
-4. Performance Analysis and Improvements
-5. Further Reading
+4. Results
+5. Performance Analysis and Improvements
+6. Further Reading
 
 ---
 
@@ -62,6 +63,8 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 - For time comparison, we simply used a timer measuring in seconds.
 - For space comparison, we wanted to know the table density. We calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor every time right before our table expanded. For example, while inserting 1,000,000 inputs, our hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
 
+### 4. Results:
+
 **Insertion Times:**
 
 | Number of inputs   |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
@@ -89,9 +92,9 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 |      10000         |                     |                    |
 |      100000        |                     |                    | 
 
-### 4. Performance Analysis and Improvements
+### 5. Performance Analysis and Improvements
 
-### 5. Further Reading
+### 6. Further Reading
 
 - Herlihy, Shavit and Tzafrir. ["Hopscotch Hashing"](http://people.csail.mit.edu/shanir/publications/disc2008_submission_98.pdf). Distributed Computing, 22nd International Symposium. September 24, 2008. Arachon, France.
 - Pandiyan, Monteiro, and Hariesh. ["Hopscotch Hashing"](http://www.cs.nyu.edu/~lerner/spring11/proj_hopscotch.pdf). New York University. 
