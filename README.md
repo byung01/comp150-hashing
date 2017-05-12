@@ -68,7 +68,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 **Insertion Times:**
 
 | Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
-| ---------------- |:------------------:| ------------------:| ------ |       
+| :----------------: |:------------------:| :------------------:| :------: |       
 | 1000        | 0.00209 seconds | 0.00234 seconds |               |
 | 10,000      | 0.01854 seconds | 0.01860 seconds |               |
 | 100,000     | 0.16238 seconds | 0.16850 seconds |               |
@@ -78,7 +78,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 **Insertion Average Load Factors During Expansion:**
 
 | Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
-| ---------------- |:------------------:| ------------------:| ------ |       
+| :----------------: |:------------------:| :------------------:| :------: |       
 | 1000        | 96.372% | 98.838% |               |
 | 10,000      | 96.481% | 97.218% |               |
 | 100,000     | 94.217% | 96.762% |               |
@@ -105,7 +105,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 **Overall Conclusions:** We found that for hopscotch hashing, H = 32 is faster than H = 64 for each operation (insert and search). However, H = 64 provides a better load factor since our neighborhood has more buckets. Thus, there is a tradeoff between time and load factor for neighborhood size with hopscotch hashing.
 
-**Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoow with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure. Furthermore, we would like to add a third table to our implementation of cuckoo hashing for performance analysis.
+**Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoo with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure. Furthermore, we would like to add a third table to our implementation of cuckoo hashing for performance analysis.
 
 ### 6. Further Reading
 
