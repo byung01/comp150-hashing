@@ -88,7 +88,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 **Query Times:**
 
 | Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
-| :----------------: |:------------------:| ------------------:| ------ |       
+| :----------------: |:------------------:| :------------------:| :------: |       
 | 1000        | 0.00110 seconds | 0.00151 seconds |               |
 | 10,000      | 0.00904 seconds | 0.00917 seconds |               |
 | 100,000     | 0.09920 seconds | 0.09714 seconds |               |
