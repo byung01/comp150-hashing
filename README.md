@@ -49,7 +49,7 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 1. Hash a word
 2. If not found in cell, hash key with second hashing function, to look in second table
 
-**Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/cuckoo_hashing)
+**Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/cuckoo-hashing)
 
 ### 3. Testing Hopscotch and Cuckoo Performance
 
