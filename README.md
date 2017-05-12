@@ -57,11 +57,11 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 **Independent variables:** For testing, we ran the hopscotch and cuckoo algorithms over various sizes of inputs. In addition, for hopscotch hashing, we also obtained results for H = 32 and H = 64 (H is the number of buckets in a neighborhood) because the range from 32 to 64 is the optimal range according to the original paper. 
 
-**Controlled variables:** To ensure that our comparison is precise as possible, we used the same hash function for both the hopscotch and cuckoo algorithms.
+**Controlled variables:** To ensure that our comparison is precise as possible, we used the same hash function for both the hopscotch and cuckoo algorithms. The input strings for each category were derived from an online source that originally contained 479K distinct words. In order to get more strings, we appended random characters to each original word to expand our list of inputs and make each input string distinct.
 
 **Method:**
 - For time comparison, we simply used a timer measuring in seconds.
-- For space comparison, we wanted to know the table density. We calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor every time right before our table expanded. For example, while inserting 1,000,000 inputs, our hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
+- For space comparison, we wanted to know the table density. We calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor every time right before our table expanded. For example, while inserting 10,000,000 inputs, our hopscotch hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
 
 ### 4. Results
 
@@ -69,32 +69,43 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 | Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
 | ------------------- |:--------------------------:| ----------------------------:| ------------- |       
-|      1000           |                            |                              |               |
-|      10,000         |                            |                              |               |
-|      100,000        |                            |                              |               |
-|      1,000,000      |                            |                              |               |
-|      10,000,000     |                            |                              |               |
+|      1000           |       0.00209 seconds      |        0.00234 seconds       |               |
+|      10,000         |       0.01854 seconds      |        0.01860 seconds       |               |
+|      100,000        |       0.16238 seconds      |        0.16850 seconds       |               |
+|      1,000,000      |       1.77407 seconds      |        1.96746 seconds       |               |
+|      10,000,000     |       17.9326 seconds      |        19.8266 seconds       |               |
 
-**Insertion Average Load Factors:**
+**Insertion Average Load Factors During Expansion:**
 
 | Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
 | ------------------- |:--------------------------:| ----------------------------:| ------------- |       
-|      1000           |                            |                              |               |
-|      10,000         |                            |                              |               |
-|      100,000        |                            |                              |               |
-|      1,000,000      |                            |                              |               |
-|      10,000,000     |                            |                              |               |
+|      1000           |          96.372%           |          98.838%             |               |
+|      10,000         |          96.481%           |          97.218%             |               |
+|      100,000        |          94.217%           |          96.762%             |               |
+|      1,000,000      |          89.286%           |          92.642%             |               |
+|      10,000,000     |          88.277%           |          92.347%             |               |
 
 **Query Times:**
 
-| Number of inputs   |     Hopscotch       |       Cuckoo       |
-| ------------------ |:-------------------:| ------------------:| 
-|      100           |                     |                    |                 
-|      1000          |                     |                    |
-|      10000         |                     |                    |
-|      100000        |                     |                    | 
+| Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
+| ------------------- |:--------------------------:| ----------------------------:| ------------- |       
+|      1000           |       0.00110 seconds      |        0.00151 seconds       |               |
+|      10,000         |       0.00904 seconds      |        0.00917 seconds       |               |
+|      100,000        |       0.09920 seconds      |        0.09714 seconds       |               |
+|      1,000,000      |       0.98817 seconds      |        1.04526 seconds       |               |
+|      10,000,000     |       11.9828 seconds      |        11.8209 seconds       |               |
 
 ### 5. Performance Analysis and Improvements
+
+Observations:
+
+**Insertion Times:** For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value. 
+
+**Insertion Average Load Factors During Expansion:** First of all, we were surprised by the average load factors resulting from our implementation of hopscotch hashing. For H = 32, the average load factor was 88% at 10 million inputs. For H = 64, the average load factor was 92% at 10 million inputs. This means that H = 64 allows more values to be added to our table with minimal collisions. The average load factors from our results proves that hashing via the hopscotch algorithm guarantees a higher table density. High table density is desirable for hash tables, as it ensures that the table is filled as much as possible before expanding. Thus, we waste less space and and operational time on expanding. 
+
+**Overall Conclusions:** We found that for hopscotch hashing, H = 32 is faster than H = 64 for each operation (insert and search). However, H = 64 provides a better load factor since our neighborhood has more buckets. Thus, there is a tradeoff between time and load factor for neighborhood size with hopscotch hashing.
+
+**Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoow with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure.
 
 ### 6. Further Reading
 
