@@ -54,27 +54,41 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance. So for time comparison, we simply used a timer measured in miliseconds. For space comparison, we calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size.
 
-**Insertion:**
+**Insertion Times:**
 
-| Number of input    |     Time            |   Space   |
-| ------------------ |:-------------------:| ---------:|
-|                    | Hopscotch | Cuckoo  |           |
-|                    | --------- | ------- |           |                    
-|      1000          |     0.5   |   0.5   |           |
-|      10000         |     1.0   |   1.0   |           |
-|      100000        |     1.5   |   1.5   |           |                    
-|      10000000      |     2.0   |   2.0   |           |
+| Number of inputs   |     Hopscotch       |       Cuckoo       |
+| ------------------ |:-------------------:| ------------------:|                  
+|      1000          |                     |                    |
+|      10000         |                     |                    |
+|      100000        |                     |                    |                    
+|      10000000      |                     |                    |
 
-**Query:**
+**Insertion Load Factors:**
 
-| Number of input    |   Hopscotch   |   Cuckoo  |
-| ------------------ |:-------------:| ---------:|
-|                    |               |           |
-|                    |               |           |                    
-|                    |               |           |
-|                    |               |           |
-|                    |               |           |                    
-|                    |               |           |
+| Number of inputs   |     Hopscotch       |       Cuckoo       |
+| ------------------ |:-------------------:| ------------------:|                  
+|      1000          |                     |                    |
+|      10000         |                     |                    |
+|      100000        |                     |                    |                    
+|      10000000      |                     |                    |
+
+**Query Time:**
+
+| Number of inputs   |     Hopscotch       |       Cuckoo       |
+| ------------------ |:-------------------:| ------------------:|                  
+|      1000          |                     |                    |
+|      10000         |                     |                    |
+|      100000        |                     |                    |                    
+|      10000000      |                     |                    |
+
+**Query Load Factors:**
+
+| Number of inputs   |     Hopscotch       |       Cuckoo       |
+| ------------------ |:-------------------:| ------------------:|                  
+|      1000          |                     |                    |
+|      10000         |                     |                    |
+|      100000        |                     |                    |                    
+|      10000000      |                     |                    |
 
 ### 4. Performance Analysis and Improvements
 
