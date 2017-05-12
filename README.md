@@ -67,45 +67,45 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 **Insertion Times:**
 
-| Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
-| ------------------- |:--------------------------:| ----------------------------:| ------------- |       
-|      1000           |       0.00209 seconds      |        0.00234 seconds       |               |
-|      10,000         |       0.01854 seconds      |        0.01860 seconds       |               |
-|      100,000        |       0.16238 seconds      |        0.16850 seconds       |               |
-|      1,000,000      |       1.77407 seconds      |        1.96746 seconds       |               |
-|      10,000,000     |       17.9326 seconds      |        19.8266 seconds       |               |
+| Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
+| ---------------- |:------------------:| ------------------:| ------ |       
+| 1000        | 0.00209 seconds | 0.00234 seconds |               |
+| 10,000      | 0.01854 seconds | 0.01860 seconds |               |
+| 100,000     | 0.16238 seconds | 0.16850 seconds |               |
+| 1,000,000   | 1.77407 seconds | 1.96746 seconds |               |
+| 10,000,000  | 17.9326 seconds | 19.8266 seconds |               |
 
 **Insertion Average Load Factors During Expansion:**
 
-| Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
-| ------------------- |:--------------------------:| ----------------------------:| ------------- |       
-|      1000           |          96.372%           |          98.838%             |               |
-|      10,000         |          96.481%           |          97.218%             |               |
-|      100,000        |          94.217%           |          96.762%             |               |
-|      1,000,000      |          89.286%           |          92.642%             |               |
-|      10,000,000     |          88.277%           |          92.347%             |               |
+| Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
+| ---------------- |:------------------:| ------------------:| ------ |       
+| 1000        | 96.372% | 98.838% |               |
+| 10,000      | 96.481% | 97.218% |               |
+| 100,000     | 94.217% | 96.762% |               |
+| 1,000,000   | 89.286% | 92.642% |               |
+| 10,000,000  | 88.277% | 92.347% |               |
 
 **Query Times:**
 
-| Number of inputs    |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo      |
-| ------------------- |:--------------------------:| ----------------------------:| ------------- |       
-|      1000           |       0.00110 seconds      |        0.00151 seconds       |               |
-|      10,000         |       0.00904 seconds      |        0.00917 seconds       |               |
-|      100,000        |       0.09920 seconds      |        0.09714 seconds       |               |
-|      1,000,000      |       0.98817 seconds      |        1.04526 seconds       |               |
-|      10,000,000     |       11.9828 seconds      |        11.8209 seconds       |               |
+| Number of inputs | Hopscotch (H = 32) | Hopscotch (H = 64) | Cuckoo |
+| ---------------- |:------------------:| ------------------:| ------ |       
+| 1000        | 0.00110 seconds | 0.00151 seconds |               |
+| 10,000      | 0.00904 seconds | 0.00917 seconds |               |
+| 100,000     | 0.09920 seconds | 0.09714 seconds |               |
+| 1,000,000   | 0.98817 seconds | 1.04526 seconds |               |
+| 10,000,000  | 11.9828 seconds | 11.8209 seconds |               |
 
 ### 5. Performance Analysis and Improvements
 
-Observations:
+**Observations for Insertion Times:** For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value. 
 
-**Insertion Times:** For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value. 
+**Observations for Insertion Average Load Factors During Expansion:** First of all, we were surprised by the average load factors resulting from our implementation of hopscotch hashing. For H = 32, the average load factor was 88% at 10 million inputs. For H = 64, the average load factor was 92% at 10 million inputs. This means that H = 64 allows more values to be added to our table with minimal collisions. The average load factors from our results proves that hashing via the hopscotch algorithm guarantees a higher table density. High table density is desirable for hash tables, as it ensures that the table is filled as much as possible before expanding. Thus, we waste less space and and operational time on expanding. 
 
-**Insertion Average Load Factors During Expansion:** First of all, we were surprised by the average load factors resulting from our implementation of hopscotch hashing. For H = 32, the average load factor was 88% at 10 million inputs. For H = 64, the average load factor was 92% at 10 million inputs. This means that H = 64 allows more values to be added to our table with minimal collisions. The average load factors from our results proves that hashing via the hopscotch algorithm guarantees a higher table density. High table density is desirable for hash tables, as it ensures that the table is filled as much as possible before expanding. Thus, we waste less space and and operational time on expanding. 
+**Observations for Query Times:** For hopscotch hashing, the query times also gave us expected behavior of linear time as we increased the dataset. For hopscotch hashing, H = 32 yields faster times than H = 64, because the neighborhood is smaller so we linear probe less for each search.
 
 **Overall Conclusions:** We found that for hopscotch hashing, H = 32 is faster than H = 64 for each operation (insert and search). However, H = 64 provides a better load factor since our neighborhood has more buckets. Thus, there is a tradeoff between time and load factor for neighborhood size with hopscotch hashing.
 
-**Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoow with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure.
+**Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoow with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure. Furthermore, we would like to add a third table to our implementation of cuckoo hashing for performance analysis.
 
 ### 6. Further Reading
 
