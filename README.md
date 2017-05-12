@@ -8,7 +8,7 @@
 2. Cuckoo Hashing
 3. Comparison of Hopscotch and Cuckoo Performance
 4. Performance Analysis and Improvements
-5. Bibliography
+5. Further Reading
 
 ---
 
@@ -52,46 +52,43 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 ### 3. Comparison of Hopscotch and Cuckoo Performance
 
-To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance. So for time comparison, we simply used a timer measured in miliseconds. For space comparison, we calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size.
+To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance. Thus for time comparison, we simply used a timer measuring in seconds. For space comparison, we wanted to know the table density by calculating the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor every time right before our table expanded. For example, while inserting 1,000,000 inputs, our hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
+
+To ensure that our comparison is precise as possible, we used the same hash function for both the hopscotch and cuckoo algorithms. In addition, for hopscotch hashing, we chose to obtain the results where H = 32 and H = 64 (H is the number of buckets in a neighborhood).  
 
 **Insertion Times:**
 
-| Number of inputs   |     Hopscotch       |       Cuckoo       |
-| ------------------ |:-------------------:| ------------------:|                  
-|      1000          |                     |                    |
-|      10000         |                     |                    |
-|      100000        |                     |                    |                    
-|      10000000      |                     |                    |
+| Number of inputs   |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo     |
+| ------------------ |:--------------------------:| ----------------------------:| -------------|
+|      100           |                            |                              |              |       
+|      1000          |                            |                              |              |
+|      10000         |                            |                              |              |
+|      100000        |                            |                              |              |
 
-**Insertion Load Factors:**
+**Insertion Average Load Factors:**
 
-| Number of inputs   |     Hopscotch       |       Cuckoo       |
-| ------------------ |:-------------------:| ------------------:|                  
-|      1000          |                     |                    |
-|      10000         |                     |                    |
-|      100000        |                     |                    |                    
-|      10000000      |                     |                    |
+| Number of inputs   |     Hopscotch (H = 32)     |     Hopscotch (H = 64)       |   Cuckoo     |
+| ------------------ |:--------------------------:| ----------------------------:| -------------|
+|      100           |                            |                              |              |       
+|      1000          |                            |                              |              |
+|      10000         |                            |                              |              |
+|      100000        |                            |                              |              |  
 
-**Query Time:**
-
-| Number of inputs   |     Hopscotch       |       Cuckoo       |
-| ------------------ |:-------------------:| ------------------:|                  
-|      1000          |                     |                    |
-|      10000         |                     |                    |
-|      100000        |                     |                    |                    
-|      10000000      |                     |                    |
-
-**Query Load Factors:**
+**Query Times:**
 
 | Number of inputs   |     Hopscotch       |       Cuckoo       |
-| ------------------ |:-------------------:| ------------------:|                  
+| ------------------ |:-------------------:| ------------------:| 
+|      100           |                     |                    |                 
 |      1000          |                     |                    |
 |      10000         |                     |                    |
-|      100000        |                     |                    |                    
-|      10000000      |                     |                    |
+|      100000        |                     |                    | 
 
 ### 4. Performance Analysis and Improvements
 
-### 5. Bibliography
+### 5. Further Reading
 
-- Herlihy, Shavit and Tzafrir. "Hopscotch Hashing". 2008. 
+- Herlihy, Shavit and Tzafrir. ["Hopscotch Hashing"](http://people.csail.mit.edu/shanir/publications/disc2008_submission_98.pdf). Distributed Computing, 22nd International Symposium. September 24, 2008. Arachon, France.
+- Pandiyan, Monteiro, and Hariesh. ["Hopscotch Hashing"](http://www.cs.nyu.edu/~lerner/spring11/proj_hopscotch.pdf). New York University. 
+- Pagh and Rodler. ["Cuckoo Hashing"](http://resources.mpi-inf.mpg.de/departments/d1/teaching/ws14/AlgoDat/materials/cuckoo.pdf). BRICS, Department of Computer Science University of Aarhus. August 2001. Copenhagen, Denmark.
+
+ 
