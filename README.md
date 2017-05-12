@@ -8,8 +8,7 @@
 2. Cuckoo Hashing
 3. Comparison of Hopscotch and Cuckoo Performance
 4. Performance Analysis and Improvements
-5. Conclusion
-6. Bibliography
+5. Bibliography
 
 ---
 
@@ -53,18 +52,18 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 ### 3. Comparison of Hopscotch and Cuckoo Performance
 
-To find out whether hopscotch hashing or cuckoo hashing delivers better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. 
+To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance. So for time comparison, we simply used a timer measured in miliseconds. For space comparison, we calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size.
 
 **Insertion:**
 
-| Number of input    |   Hopscotch   |   Cuckoo  |
+| Number of input    |     Time      |   Space   |
 | ------------------ |:-------------:| ---------:|
-|                    |               |           |
-|                    |               |           |                    
-|                    |               |           |
-|                    |               |           |
-|                    |               |           |                    
-|                    |               |           |
+|                    |       |       |           |
+|                    |       |       |           |                    
+|                    |       |       |           |
+|                    |       |       |           |
+|                    |       |       |           |                    
+|                    |       |       |           |
 
 **Query:**
 
@@ -76,3 +75,9 @@ To find out whether hopscotch hashing or cuckoo hashing delivers better performa
 |                    |               |           |
 |                    |               |           |                    
 |                    |               |           |
+
+### 4. Performance Analysis and Improvements
+
+### 5. Bibliography
+
+- Herlihy, Shavit and Tzafrir. "Hopscotch Hashing". 2008. 
