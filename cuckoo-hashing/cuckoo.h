@@ -22,6 +22,10 @@ public:
 private:
 	string **hashTable;
 	int size;
+	int capacity;
 	int maxrec;
+	int times_expanded;
+	double total_load_factor_percentage;
+	void insertKey(string key, int tablenum, int rec);
 };
 
