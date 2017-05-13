@@ -8,8 +8,9 @@
 2. Cuckoo Hashing
 3. Testing Hopscotch and Cuckoo Performance
 4. Results
-5. Performance Analysis and Improvements
-6. Further Reading
+5. Performance Analysis
+6. Improvements
+7. Further Reading
 
 ---
 
@@ -126,16 +127,15 @@ We found that for hopscotch hashing, H = 32 is faster than H = 64 for each opera
 
 Our implementation of cuckoo hashing surprisingly did not give us our expected results. However, this may be due to our hash functions. If both the hash functions generated similar keys, then cuckoo hashing will always loop during insertion, which will force the table to expand to slightly modify its hash. However, generating a uniform hash function was not an easy task and generating two different ones was a tricky task.
 
-**Improvements:** 
+### 6. Improvements
 
 For our implementation of hopscotch hashing, we implemented the data structure to be circular so that the neighborhood of an element at the end of the array wrapped back to the beginning. This allowed us to potentially insert more elements into our table. In the end, we achieved the performance results we expected (from our research on hopscotch hashing).
 
-There exist several measures of improvements for our implementation of cuckoo hashing. Research states that using more than two hashing functions utilizes more of the table, and using simply one more can put an upper bound on the load factor of 91% and a lower bound of 88%. To boost performance, we can also increase the set maximum number of iterations when insertion goes into a loop. The standard for an implementation is around 16. However, on a data set as big as 1 or 10 million, it is possible that more than 16 elements are evicted and replaced in their alternative locations. Therefore, one can avoid unnecessary resizing of the table in these cases, by increasing the number of iteration. Our first attempt of hashing one million elements was unsuccessful, until we raised the number of maximum recursions to 50. However, the program always terminated with ten million inputs
+There exist several measures of improvements for our implementation of cuckoo hashing. Research states that using more than two hashing functions utilizes more of the table, and using simply one more can put an upper bound on the load factor of 91% and a lower bound of 88%. To boost performance, we can also increase the set maximum number of iterations when insertion goes into a loop. The standard for an implementation is around 16. However, on a data set as big as 1 or 10 million, it is possible that more than 16 elements are evicted and replaced in their alternative locations. Therefore, we can avoid unnecessary resizing of the table in these cases by increasing the number of iteration. Our first attempt of hashing one million elements was unsuccessful until we raised the number of maximum recursions to 50. However, the program always terminated on 10 million inputs.
 
-**Going Further:** 
 The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoo with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure. Furthermore, we would like to add a third table to our implementation of cuckoo hashing for performance analysis.
 
-### 6. Further Reading
+### 7. Further Reading
 
 - Herlihy, Shavit and Tzafrir. ["Hopscotch Hashing"](http://people.csail.mit.edu/shanir/publications/disc2008_submission_98.pdf). Distributed Computing, 22nd International Symposium. September 24, 2008. Arachon, France.
 - Pandiyan, Monteiro, and Hariesh. ["Hopscotch Hashing"](http://www.cs.nyu.edu/~lerner/spring11/proj_hopscotch.pdf). New York University. 
