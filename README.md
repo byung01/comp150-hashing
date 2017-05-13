@@ -4,22 +4,22 @@
 ---
 
 ### Table of Contents:
-0. Introduction
-1. Hopscotch Hashing
-2. Cuckoo Hashing
-3. Testing Hopscotch and Cuckoo Performance
-4. Results
-5. Performance Analysis and Improvements
-6. Further Reading
+1. Introduction
+2. Hopscotch Hashing
+3. Cuckoo Hashing
+4. Testing Hopscotch and Cuckoo Performance
+5. Results
+6. Performance Analysis and Improvements
+7. Further Reading
 
 ---
-### 0. Introduction
+### 1. Introduction
 What is hashing?
 Hashmap
 Hash Functions
 Why are hashing algorithms important?
 
-### 1. Hopscotch Hashing
+### 2. Hopscotch Hashing
 
 Hopscotch hashing is an alternative hashing algorithm originally proposed by Maurice Herlihy, Nir Shavit and Moran Tzafrir. A main advantage of hopscotch hashing is that this algorithm guarantees a small number of contiguous lookups as table density increases. For our project, we implemented the insert and search operations of hopscotch hashing. The delete operation was not implemented nor timed for analysis, because it follows a similar method as searching.
 
@@ -39,7 +39,7 @@ Hopscotch hashing is an alternative hashing algorithm originally proposed by Mau
 
 **Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/hopscotch-hashing)
 
-### 2. Cuckoo Hashing
+### 3. Cuckoo Hashing
 
 Cuckoo hashing is another alternative hashing algorithm first described by Rasmus Pagh and Flemming Friche Rodler in 2001. The most significant advantage of the algorithm is that it ensures constant lookup time amortized. For our project, we implemented the insert and search operations of hopscotch hashing. The delete operation was also not implemented nor timed for analysis.
 
@@ -57,7 +57,7 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 **Link to implementation:** [here](https://github.com/byung01/comp150-hashing/tree/master/cuckoo-hashing)
 
-### 3. Testing Hopscotch and Cuckoo Performance
+### 4. Testing Hopscotch and Cuckoo Performance
 
 To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance that we expect.
 
@@ -69,7 +69,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 - For time comparison, we simply used a timer measuring in seconds.
 - For space comparison, we wanted to know the table density. We calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor before our table expanded and took the average over the number of expansions. For example, while inserting 10,000,000 inputs, our hopscotch hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
 
-### 4. Results
+### 5. Results
 
 **Insertion Times:**
 
@@ -104,7 +104,7 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 | 1,000,000        | 0.98817 seconds    | 1.04526 seconds    | 1.13416 seconds|
 | 10,000,000       | 11.9828 seconds    | 11.8209 seconds    | N/A            |
 
-### 5. Performance Analysis and Improvements
+### 6. Performance Analysis and Improvements
 
 **Observations for Insertion Times:** For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value. 
 
@@ -118,7 +118,7 @@ For the results of cuckoo hashing, we were disappointed to see that the load fac
 
 **Improvements:** The results from these tests were only derived from our implementations, so it would be interesting to further this study by comparing our implementation of hopscotch and cuckoo with others' implementations (for example, using bitmap vs. linked list representations to represent neighborhoods). If we had more time, we would also compare our implementation of hashing algorithms to the C++ library's built-in hash structure. Furthermore, we would like to add a third table to our implementation of cuckoo hashing for performance analysis.
 
-### 6. Further Reading
+### 7. Further Reading
 
 - Herlihy, Shavit and Tzafrir. ["Hopscotch Hashing"](http://people.csail.mit.edu/shanir/publications/disc2008_submission_98.pdf). Distributed Computing, 22nd International Symposium. September 24, 2008. Arachon, France.
 - Pandiyan, Monteiro, and Hariesh. ["Hopscotch Hashing"](http://www.cs.nyu.edu/~lerner/spring11/proj_hopscotch.pdf). New York University. 
