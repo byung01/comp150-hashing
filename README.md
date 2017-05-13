@@ -59,14 +59,16 @@ To resolve colllisions, cuckoo hashing uses open addressing in two tables. Each 
 
 ### 4. Testing Hopscotch and Cuckoo Performance
 
-To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and query for each algorithm. It is critical that a hash table can deliver the constant time peformance that we expect.
+To find out whether hopscotch hashing or cuckoo hashing results in better performance, we ran tests to compare the space and time required for insertion and querying for each algorithm. It is critical that a hash table can deliver the constant time peformance that we expect.
 
 **Independent variables:** For testing, we ran the hopscotch and cuckoo algorithms over various sizes of inputs. In addition for hopscotch hashing, we also obtained results for H = 32 and H = 64 (H is the number of buckets in a neighborhood) because the range from 32 to 64 is the optimal range according to the original paper. 
 
 **Controlled variables:** To ensure that our comparison is precise as possible, we used the same hash function for both the hopscotch and cuckoo algorithms. The input strings for each category were derived from an online source that originally contained 479K distinct words. In order to get more strings, we appended random characters to each original word to expand our list of inputs and make each input string distinct.
 
+**How we chose our hash functions:** We did some online research on how to implement a generally uniform hash function in C++. Many stated that using prime numbers as a seed to modify the our input would give us a a "good enough" randomized hash-key. We also used *bitwise and* in our computation because machines operates on bits much faster. This ensures that our hash functions will not affect the overall runtime of our program.
+
 **Method:**
-- For time comparison, we simply used a timer measuring in seconds.
+- For time comparison, we simply used a timer measuring in seconds. We measured insertion and querying separately.
 - For space comparison, we wanted to know the table density. We calculated the load factor, which is *n / m* where *n* is the number of keys in the table and *m* is the table size. For accuracy, we decided to use the average load factor for each category of number of inputs. To accomplish this, we calculated the load factor before our table expanded and took the average over the number of expansions. For example, while inserting 10,000,000 inputs, our hopscotch hash table expanded 18 times with an average load factor of 88%. This average calculation will allow us to gain a more accurate representation of load factors and table densities in our analysis.
 
 ### 5. Results
@@ -106,7 +108,12 @@ To find out whether hopscotch hashing or cuckoo hashing results in better perfor
 
 ### 6. Performance Analysis and Improvements
 
-**Observations for Insertion Times:** For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value. 
+**Observations for Insertion Times:** 
+For both H = 32 and H = 64, the increase in insertion time for hopscotch hashing is linear (both the dataset and the time it took to insert increased by a factor of 10 each time). This performance is ideal, because there is no unreasonable increase in insertion time as inputs get exceptionally large. Hopscotch hashing with H = 32 takes less time than H = 64. H = 32 is faster, because the neighborhood is smaller, so we linear probe less and take less number of steps to get our value.
+
+For cuckoo hashing, we find that insertion times are pretty consistent with our expectations with small data sets. However, as the data set grew, the more and more our algorithm needed to expand the table. 
+
+ expanding the table takes so long that the insertion time overall increases. This observation allows us to conclude that the insertions themselves are fast, but that the space complexity of the Cuckoo algorithm inhibits its usefulness.
 
 **Observations for Insertion Average Load Factors During Expansion:** First of all, we were surprised by the average load factors resulting from our implementation of hopscotch hashing. For H = 32, the average load factor was 88% at 10 million inputs. For H = 64, the average load factor was 92% at 10 million inputs. This means that H = 64 allows more values to be added to our table with minimal expansions. The results from the average load factors proves that hashing via the hopscotch algorithm guarantees a higher table density. High table density is desirable for hash tables, as it ensures that the table is filled as much as possible before expanding. Thus, we waste less space and and operational time on expanding.
 
