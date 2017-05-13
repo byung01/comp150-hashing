@@ -10,6 +10,7 @@ Add `#include "hopscotch_hashing.h"` at the beginning of your file to use this i
 ### Purpose
 The executable *hopscotch_hashing* the relevant data that we used for the analysis of the hashing algorithms.
 * Capacity
+* Number of Expansions
 * Average Load Factor
 * Insertion time
 * Querying time

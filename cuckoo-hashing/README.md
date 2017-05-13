@@ -10,6 +10,7 @@ Add `#include "cuckoo.h"` at the beginning of the file to use this implementatio
 ### Purpose
 The executable *cuckoo_hashing* the relevant data that we used for the analysis of the hashing algorithms.
 * Capacity
+* Number of Expansions
 * Average Load Factor
 * Insertion time
 * Querying time

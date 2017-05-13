@@ -182,5 +182,6 @@ void Hopscotch_Hashtable::print()
 {
     cout << "Size: " << size << endl;
     cout << "Capacity: " << capacity << endl;
+    cout << "Number of Expansions: " << times_expanded << endl;
     cout << "Average Load Factor: " << (total_load_factor_percentage/times_expanded) * 100 << endl;
 }
