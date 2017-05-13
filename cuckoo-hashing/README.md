@@ -8,7 +8,7 @@
 Add `#include "cuckoo.h"` at the beginning of the file to use this implementation as a data structure in your C++ program.
 
 ### Purpose
-The executable *cuckoo_hashing* the relevant data that we used for the analysis of the hashing algorithms.
+The executable *cuckoo_hashing* prints the relevant data that we used for the analysis of the hashing algorithms.
 * Capacity
 * Number of Expansions
 * Average Load Factor
